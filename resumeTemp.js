@@ -3,7 +3,10 @@ var doc = new jsPDF();
 
 function downloadPDF()
 {
-    var text = document.getElementById('name').value;
+var text = document.getElementById('name').value;
+var emailIcon = new Image();
+emailIcon.src = 'email-icon.png';
+
 // Set the font size and style
 doc.setFont('times');
 doc.setFontSize(12);
@@ -16,7 +19,11 @@ doc.text(20, 20, text);
 doc.text(20, 25, '123 Main Street');
 doc.text(20, 40, 'Anytown, USA 12345');
 doc.text(20, 50, '555-555-1212');
-doc.text(20, 60, 'john.smith@example.com');
+doc.setTextColor(0, 0, 255);  // Set the text color to blue
+doc.setLineWidth(1);  // Set the line width for the email icon
+doc.addImage(emailIcon, 'PNG', 20, 60, 20, 20);
+doc.text(50, 60, 'john.smith@example.com');
+
 
 // Add a horizontal line to visually separate the contact information from the rest of the resume
 doc.line(20, 65, 190, 65);
