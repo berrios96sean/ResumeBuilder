@@ -9,5 +9,5 @@ function downloadPDF() {
   doc.text(text, 10, 10);
 
   // Save the PDF
-  doc.save('form-data.pdf');
+  doc.save(doc.text + '.pdf');
 }
