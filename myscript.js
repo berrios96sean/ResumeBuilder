@@ -7,7 +7,7 @@ function downloadPDF() {
 
   // Add the text to the PDF
   doc.text(text, 10, 10);
-
+  
   // Save the PDF
-  doc.save('form-data.pdf');
+  doc.save('Resume.pdf');
 }
