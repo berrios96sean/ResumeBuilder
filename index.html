@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Resume Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   </head>
   <body>
     <header>
@@ -23,7 +24,8 @@
         <input type="text" id="name" name="name"><br>
         <input type="submit" value="Submit">
       </form>   
-      <button type="button">Download</button>   
+      <button type="button" onclick="downloadPDF()">Download</button>
+      <script src="myscript.js"></script> 
       <a href="#" class="button">Create Your Resume</a>
     </main>
     <footer>
