@@ -22,10 +22,43 @@
     <main>
       <h2>Welcome to Resume Builder</h2>
       <p>Use this tool to create and customize professional resumes in minutes.</p>
-      <form>
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
-      </form>   
+      <h2>Personal Information</h2>
+      <div class="row">
+        <div class="column">
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+              </form>   
+              <form>
+                <label for="Street_Address">Street_Address:</label><br>
+                <input type="text" id="Street_Address" name="Street_Address"><br>
+              </form>   
+              <form>
+                <label for="City">City:</label><br>
+                <input type="text" id="City" name="City"><br>
+              </form>  
+              <form>
+                <label for="State">State:</label><br>
+                <input type="text" id="State" name="State"><br>
+              </form>  
+        </div>
+        <div class="column"> 
+              <form>
+                <label for="Zip">Zip:</label><br>
+                <input type="text" id="Zip" name="Zip"><br>
+              </form>   
+              <form>
+                <label for="Phone_Num">Phone_Num:</label><br>
+                <input type="text" id="Phone_Num" name="Phone_Num"><br>
+              </form>   
+              <form>
+                <label for="Email">Email:</label><br>
+                <input type="text" id="Email" name="Email"><br>
+              </form> 
+        </div>
+      </div>
+ 
+  
       <button type="button" onclick="downloadPDF()">Download</button>
       <script src="resumeTemp.js"></script> 
     </main>
