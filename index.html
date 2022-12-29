@@ -76,11 +76,11 @@
         <div class="column">
           <form>
             <label for="School_Started">Date Started:</label><br>
-            <input type="text" id="School_Started" name="School_Started"><br>
+            <input type="date" id="School_Started" name="School_Started"><br>
           </form>  
           <form>
             <label for="School_Ended">Date Ended:</label><br>
-            <input type="text" id="School_Ended" name="School_Ended"><br>
+            <input type="date" id="School_Ended" name="School_Ended"><br>
           </form>  
         </div>
       </div>
@@ -89,30 +89,35 @@
         <div class="column">
           <h3>Job 1</h3>
           <form>
-            <label for="Company">Company:</label><br>
-            <input type="text" id="Company" name="Company"><br>
+            <input type="text" id="Company1" name="Company1"placeholder="Company"><br>
           </form>   
           <form>
-            <label for="Job_Title">Job Title:</label><br>
-            <input type="text" id="Job_Title" name="Job_Title"><br>
-          </form>   
+            <input type="text" id="Job_Title1" name="Job_Title1"placeholder="Job Title"><br>
+          </form>
+          <p class="date">Date Started</p>   
           <form>
-            <label for="J1_Started">Date Started:</label><br>
-            <input type="text" id="J1_Started" name="J1_Started"><br>
-          </form>  
+            <input type="date" id="J1_Started" name="J1_Started" title="Date Started"><br>
+          </form>
+          <p class="date">Date Ended</p>
           <form>
-            <label for="J1_Ended">Date Ended:</label><br>
-            <input type="text" id="J1_Ended" name="J1_Ended"><br>
+            <input type="date" id="J1_Ended" name="J1_Ended" title="Date Ended"><br>
           </form>  
-          <button type="button" onclick="addForm()" id="add-button">+</button>
+          <button type="button" onclick="addForm()" id="add-button" title="Add another Work Experience">+</button>
         </div>
 
         <div class="column">
         </div>
       </div>
- 
-  
-      <button type="button" onclick="downloadPDF()">Download</button>
+      <h2>Projects</h2>
+          <h3>Project 1</h3>
+            <form >
+              <input type="text" id="Project1" name="Project1"placeholder="Project Name"><br>
+            </form>   
+            <form>
+              <input type="text" id="P1_Description1" name="P1_Description1"placeholder="Description"><br>
+              <button type="button" onclick="addDescr()" id="add-descr" title="Add another Description">+</button>
+            </form>
+          <button type="button" onclick="addProj()" id="add-proj" title="Add another Project">+</button>
       <script src="resumeTemp.js"></script> 
     </main>
     <footer>

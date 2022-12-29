@@ -1,9 +1,18 @@
 // First, create a new instance of the jsPDF library
 var formCounter = 1;
+var descrCounter = 1; 
+var descrCounter2 = 1; 
+var descrCounter3 = 1; 
+var projCounter =1; 
+var descr = 0;
+var descr2 =0; 
+var descr3 = 0;
+var descr4 = 0;
+var formNum = 0; 
 
 function downloadPDF()
 {
-  
+    var y = 15; 
     var doc = new jsPDF();
 var text = document.getElementById('name').value;
 var street_address = document.getElementById('Street_Address').value;
@@ -24,108 +33,150 @@ doc.setFontStyle('normal');
 // Add the name of the job seeker at the top of the page
 doc.setFontSize(14);
 doc.setFontStyle('bold');
-doc.text(text, 105,20-5, "center");
+doc.text(text, 105,y, "center");
 
 // Add the job seeker's contact information below their name
 doc.setFontSize(12);
 doc.setFontStyle('normal');
-doc.text(street_address, 105,25-5, "center");
+y = addFive(y); 
+doc.text(street_address, 105,y, "center");
 if (City != "" || State != "" || Zip != "") {
-    doc.text(City + comma + State + comma + Zip, 105, 30 - 5, "center");
+    y = addFive(y); 
+    doc.text(City + comma + State + comma + Zip, 105, y, "center");
   }  
-doc.text(Phone_Num, 105,35-5, "center");
-doc.text(Email,105, 40-5,"center");
+  y = addFive(y); 
+doc.text(Phone_Num, 105,y, "center");
+y = addFive(y); 
+doc.text(Email,105, y,"center");
 
 // Add a horizontal line to visually separate the contact information from the rest of the resume
-doc.line(10, 45-5, 200, 45-5);
+y = addFive(y); 
+doc.line(10, y, 200, y);
 
 // Add the job seeker's education
+y = addTen(y); 
 doc.setFontSize(16);
 doc.setFontStyle('bold');
-doc.text(10, 55-5, 'Education');
+doc.text(10, y, 'Education');
 
 doc.setFontSize(12);
 doc.setFontStyle('normal');
-doc.text(10, 62-5, 'University of Technology');
-doc.text('September 2016 - June 2020',200, 62-5, "right");
-doc.text(10, 67-5, 'Bachelor of Science in Computer Science');
-doc.text(10, 72-5, 'GPA: '+"4.0");
+y = addSeven(y); 
+doc.text(10, y, 'University of Technology');
+doc.text('September 2016 - June 2020',200, y, "right");
+y = addFive(y); 
+doc.text(10, y, 'Bachelor of Science in Computer Science');
+y = addFive(y); 
+doc.text(10, y, 'GPA: '+"4.0");
 
 doc.setFontSize(16);
 doc.setFontStyle('bold');
-doc.text(10, 85-5, 'Skills');
+y = addThirteen(y);
+doc.text(10, y, 'Skills');
 
 doc.setFontSize(12);
 doc.setFontStyle('normal');
-doc.text(10, 92-5, 'Programming Languages: ');
-doc.text(10, 97-5, 'Tools and Frameworks: ');
+y = addSeven(y); 
+doc.text(10, y, 'Programming Languages: ');
+y = addFive(y); 
+doc.text(10, y, 'Tools and Frameworks: ');
 
 //Add the job seeker's work experience
 doc.setFontSize(16);
 doc.setFontStyle('bold');
-doc.text(10, 110-5, 'Work Experience');
+y = addThirteen(y);
+doc.text(10, y, 'Work Experience');
 
 doc.setFontSize(12);
 doc.setFontStyle('bold');
-doc.text(10, 120-5, 'Orginization');
+y = addTen(y); 
+doc.text(10, y, 'Orginization');
 doc.setFontStyle('italic');
-doc.text(10, 125-5, 'Job Title');
+doc.text('January 2020 - Present',200, y, 'right');
+y = addFive(y); 
+doc.text(10, y, 'Job Title');
 doc.setFontStyle('normal');
-doc.text('January 2020 - Present',200, 120-5, 'right');
-doc.text(10, 130-5, ' • Developed and maintained software applications using languages such as Java and Python');
-doc.text(10, 135-5, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+y = addFive(y); 
+doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
+y = addFive(y); 
+doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
 
 doc.setFontSize(12);
 doc.setFontStyle('bold');
-doc.text(10, 145-5, 'Orginization');
+y = addTen(y);
+doc.text(10, y, 'Orginization');
 doc.setFontStyle('italic');
-doc.text(10, 150-5, 'Job Title');
+doc.text('January 2020 - Present',200, y, 'right');
+y = addFive(y); 
+doc.text(10, y, 'Job Title');
 doc.setFontStyle('normal');
-doc.text('January 2020 - Present',200, 145-5, 'right');
-doc.text(10, 155-5, ' • Developed and maintained software applications using languages such as Java and Python');
-doc.text(10, 160-5, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+y = addFive(y); 
+doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
+y = addFive(y); 
+doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+
 
 doc.setFontSize(12);
 doc.setFontStyle('bold');
-doc.text(10, 170-5, 'Orginization');
+y = addTen(y); 
+doc.text(10, y, 'Orginization');
 doc.setFontStyle('italic');
-doc.text(10, 175-5, 'Job Title');
+doc.text('January 2020 - Present',200, y, 'right');
+y = addFive(y);
+doc.text(10, y, 'Job Title');
 doc.setFontStyle('normal');
-doc.text('January 2020 - Present',200, 170-5, 'right');
-doc.text(10, 180-5, ' • Developed and maintained software applications using languages such as Java and Python');
-doc.text(10, 185-5, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+y = addFive(y);
+doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
+y = addFive(y);
+doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
 
 //Projects
 doc.setFontSize(16);
 doc.setFontStyle('bold');
-doc.text(10, 198-5, 'Projects');
+y = addThirteen(y); 
+doc.text(10, y, 'Projects');
 
 doc.setFontSize(12);
 doc.setFontStyle('bold');
-doc.text(10, 208-5, 'Project Name');
+y = addTen(y);
+doc.text(10, y, 'Project Name');
+doc.setFontStyle('italic');
+doc.text('January 2020 - Present',200, y, 'right');
 doc.setFontStyle('normal');
-doc.text('January 2020 - Present',200, 208-5, 'right');
-doc.text(10, 213-5, ' • Description 1');
-doc.text(10, 218-5, ' • Description 2');
-doc.text(10, 223-5, ' • Description 3');
+y = addFive(y);
+doc.text(10, y, ' • Description 1');
+y = addFive(y);
+doc.text(10, y, ' • Description 2');
+y = addFive(y);
+doc.text(10, y, ' • Description 3');
 
 doc.setFontSize(12);
 doc.setFontStyle('bold');
-doc.text(10, 233-5, 'Project Name');
+y = addTen(y);
+doc.text(10, y, 'Project Name');
+doc.setFontStyle('italic');
+doc.text('January 2020 - Present',200, y, 'right');
 doc.setFontStyle('normal');
-doc.text('January 2020 - Present',200, 233-5, 'right');
-doc.text(10, 238-5, ' • Description 1');
-doc.text(10, 243-5, ' • Description 2');
-doc.text(10, 248-5, ' • Description 3');
+y = addFive(y);
+doc.text(10, y, ' • Description 1');
+y = addFive(y);
+doc.text(10, y, ' • Description 2');
+y = addFive(y);
+doc.text(10, y, ' • Description 3');
 
 doc.setFontSize(12);
 doc.setFontStyle('bold');
-doc.text(10, 258-5, 'Project Name');
+y= addTen(y);
+doc.text(10, y, 'Project Name');
+doc.setFontStyle('italic');
+doc.text('January 2020 - Present',200, y, 'right');
 doc.setFontStyle('normal');
-doc.text('January 2020 - Present',200, 258-5, 'right');
-doc.text(10, 263-5, ' • Description 1');
-doc.text(10, 268-5, ' • Description 2');
-doc.text(10, 273-5, ' • Description 3');
+y = addFive(y);
+doc.text(10, y, ' • Description 1');
+y = addFive(y);
+doc.text(10, y, ' • Description 2');
+y = addFive(y);
+doc.text(10, y, ' • Description 3');
 
 // Save the PDF document
 doc.save('resume.pdf');
@@ -143,16 +194,16 @@ function clearFormValues() {
       element.value = '';
     });
   }
-
+  
   function addForm() {
     // Increment the form counter
     formCounter++;
   
-      // Show an alert if more than three jobs are added
-  if (formCounter > 3) {
-    alert('You cannot add more than three jobs!');
-    return;
-  }
+    // Show an alert if more than three jobs are added
+    if (formCounter > 3) {
+      alert('You cannot add more than three jobs!');
+      return;
+    }
   
     // Get the button element
     var button = document.querySelector('#add-button');
@@ -160,24 +211,144 @@ function clearFormValues() {
     // Create the new forms HTML as a string, using the form counter to update the IDs and names and adding the <h3> element
     var newFormsHTML = '<h3>Job ' + formCounter + '</h3>' +
                        '<form>' +
-                       '  <label for="Company' + formCounter + '">Company:</label><br>' +
-                       '  <input type="text" id="Company' + formCounter + '" name="Company' + formCounter + '"><br>' +
+                       '  <input type="text" id="Company' + formCounter + '" name="Company' + formCounter + '" placeholder="Company"><br>' +
                        '</form>' +
                        '<form>' +
-                       '  <label for="Job_Title' + formCounter + '">Job Title:</label><br>' +
-                       '  <input type="text" id="Job_Title' + formCounter + '" name="Job_Title' + formCounter + '"><br>' +
+                       '  <input type="text" id="Job_Title' + formCounter + '" name="Job_Title' + formCounter + '" placeholder="Job Title"><br>' +
                        '</form>' +
+                       '<p class="date">Date Started</p>' +
                        '<form>' +
-                       '  <label for="J' + formCounter + '_Started">Date Started:</label><br>' +
-                       '  <input type="text" id="J' + formCounter + '_Started" name="J' + formCounter + '_Started"><br>' +
+                       '  <input type="date" id="J' + formCounter + '_Started" name="J' + formCounter + '_Started" title="Date Started"><br>' +
                        '</form>' +
+                       '<p class="date">Date Ended</p>' +
                        '<form>' +
-                       '  <label for="J' + formCounter + '_Ended">Date Ended:</label><br>' +
-                       '  <input type="text" id="J' + formCounter + '_Ended" name="J' + formCounter + '_Ended"><br>' +
+                       '  <input type="date" id="J' + formCounter + '_Ended" name="J' + formCounter + '_Ended" title="Date Ended"><br>' +
                        '</form>';
   
     // Insert the new forms HTML before the button element
     button.insertAdjacentHTML('beforebegin', newFormsHTML);
+}
+  
+function addDescr() {
+    // Increment the description counter
+    descrCounter++;
+    descr++;
+  
+    if (descrCounter > 3) {
+        alert('You cannot add more than three Descriptions!');
+        return;
+      }
+
+    // Create the new description HTML as a string, using the description counter to update the IDs and names
+    var newDescrHTML = '<form>' +
+                       '  <input type="text" id="P1_Description' + descrCounter + '" name="P1_Description' + descrCounter + '"placeholder="Description"><br>' +
+                       '  <button type="button" onclick="addDescr()" id="add-descr">+</button>' +
+                       '</form>';
+  
+    // Get the initial description form element
+    var initialDescrForm = document.querySelector('#P1_Description'+descr+'').parentNode;
+  
+    // Insert the new description HTML after the initial description form element
+    initialDescrForm.insertAdjacentHTML('afterend', newDescrHTML);
+  }
+
+  function addDescr2() {
+    // Increment the description counter
+    descrCounter2++;
+    descr2++;
+  
+    if (descrCounter2 > 3) {
+        alert('You cannot add more than three Descriptions!');
+        return;
+      }
+
+    // Create the new description HTML as a string, using the description counter to update the IDs and names
+    var newDescrHTML = '<form>' +
+                       '  <input type="text" id="P2_Description' + descrCounter2 + '" name="P2_Description' + descrCounter2 + '"placeholder="Description"><br>' +
+                       '  <button type="button" onclick="addDescr2()" id="add-descr2">+</button>' +
+                       '</form>';
+  
+    // Get the initial description form element
+    var initialDescrForm = document.querySelector('#P2_Description'+descr2+'').parentNode;
+  
+    // Insert the new description HTML after the initial description form element
+    initialDescrForm.insertAdjacentHTML('afterend', newDescrHTML);
+  }
+
+  function addDescr3() {
+    // Increment the description counter
+    descrCounter3++;
+    descr3++;
+
+    if (descrCounter3 > 3) {
+        alert('You cannot add more than three Descriptions!');
+        return;
+      }
+
+    // Create the new description HTML as a string, using the description counter to update the IDs and names
+    var newDescrHTML = '<form>' +
+                       '  <input type="text" id="P3_Description' + descrCounter3 + '" name="P3_Description' + descrCounter3 + '"placeholder="Description"><br>' +
+                       '  <button type="button" onclick="addDescr3()" id="add-descr3">+</button>' +
+                       '</form>';
+  
+    // Get the initial description form element
+    var initialDescrForm = document.querySelector('#P3_Description'+descr3+'').parentNode;
+  
+    // Insert the new description HTML after the initial description form element
+    initialDescrForm.insertAdjacentHTML('afterend', newDescrHTML);
   }
   
+  function addProj() {
+    // Increment the project counter
+    projCounter++;
+    descr4++;
+    formNum++;
+
+    if (projCounter > 3) {
+        alert('You cannot add more than three Projects!');
+        return;
+      }
+
+    // Create the new project HTML as a string, using the project counter to update the IDs and names
+    var newProjHTML = '<h3>Project ' + projCounter + '</h3>' +
+                      '<form>' +
+                      '  <input type="text" id="Project' + projCounter + '" name="Project' + projCounter + '" placeholder="Project Name"><br>' +
+                      '</form>' +
+                      '<form>' +
+                      '  <input type="text" id="P' + projCounter + '_Description1" name="P' + projCounter + '_Description1" placeholder="Description"><br>' +
+                      '  <button type="button" onclick="addDescr' + projCounter + '()" id="add-descr' + projCounter + '" title="Add another Description">+</button>' +
+                      '</form>';
   
+    // Get the initial project form element
+    //var initialProjForm = document.querySelector('#f'+formNum+'').parentNode;
+    var button = document.querySelector('#add-proj');
+  
+    // Insert the new project HTML after the initial project form element
+   // initialProjForm.insertAdjacentHTML('afterend', newProjHTML);
+        // Insert the new forms HTML before the button element
+        button.insertAdjacentHTML('beforebegin', newProjHTML);
+  }  
+  
+  function addFive(y)
+  {
+      y = y +5; 
+      return y; 
+  }
+  
+  function addTen(y)
+  {
+      y = y + 10; 
+      return y; 
+  }
+
+  function addSeven(y)
+  {
+      y = y + 7; 
+      return y; 
+  }
+
+  function addThirteen(y)
+  {
+      y = y + 13; 
+      return y; 
+  }
