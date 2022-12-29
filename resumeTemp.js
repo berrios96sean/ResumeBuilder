@@ -21,6 +21,16 @@ var State = document.getElementById('State').value;
 var Zip = document.getElementById('Zip').value;
 var Phone_Num = document.getElementById('Phone_Num').value;
 var Email = document.getElementById('Email').value;
+var Project1 = document.getElementById('Project1').value;
+var P1_Description1 = document.getElementById('P1_Description1').value;
+var Company_One = document.getElementById('Company1').value;
+var Job_Title_One = document.getElementById('Job_Title1').value;
+var Job_One_Started = document.getElementById('J1_Started').value;
+var Job_One_Ended = document.getElementById('J1_Ended').value;
+
+//var P1_Description2 = document.getElementById('P1_Description2').value;
+//var P1_Description3 = document.getElementById('P1_Description3').value;
+
 var comma = ",";
 
 // Set the font size and style
@@ -81,11 +91,67 @@ doc.text(10, y, 'Programming Languages: ');
 y = addFive(y); 
 doc.text(10, y, 'Tools and Frameworks: ');
 
-//Add the job seeker's work experience
-doc.setFontSize(16);
+
+
+if (Company_One != "")
+{
+    //Add the job seeker's work experience
+    doc.setFontSize(16);
+    doc.setFontStyle('bold');
+    y = addThirteen(y);
+    doc.text(10, y, 'Work Experience');
+
+    doc.setFontSize(12);
+    doc.setFontStyle('bold');
+    y = addTen(y); 
+    doc.text(10, y, Company_One);
+
+    if (Job_One_Ended != "" && Job_One_Started != "")
+    {
+        var date = new Date(Job_One_Started);
+        var date2 = new Date(Job_One_Ended);
+            // Get the month and year of the date as a string
+    var month = date.toLocaleDateString('en-US', { month: 'long' });
+    var month2 = date2.toLocaleDateString('en-US', { month: 'long' });
+    var year = date.getFullYear();
+    var year2 = date2.getFullYear();
+
+    // Format the date as a string in the desired format
+    var formattedDate = month + ' ' + year;
+    var formattedDate2 = month2 + ' ' + year2;
+        doc.setFontStyle('italic');
+        doc.text(formattedDate+' - '+formattedDate2,200, y, 'right');
+    }
+
+    if (Job_Title_One != null)
+    {
+        doc.setFontStyle('italic');
+        y = addFive(y); 
+        doc.text(10, y, Job_Title_One);
+    }
+
+    doc.setFontStyle('normal');
+    y = addFive(y); 
+    doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
+    y = addFive(y); 
+    doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+}
+
+
+doc.setFontSize(12);
 doc.setFontStyle('bold');
-y = addThirteen(y);
-doc.text(10, y, 'Work Experience');
+y = addTen(y);
+doc.text(10, y, 'Orginization');
+doc.setFontStyle('italic');
+doc.text('January 2020 - Present',200, y, 'right');
+y = addFive(y); 
+doc.text(10, y, 'Job Title');
+doc.setFontStyle('normal');
+y = addFive(y); 
+doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
+y = addFive(y); 
+doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+
 
 doc.setFontSize(12);
 doc.setFontStyle('bold');
@@ -93,35 +159,6 @@ y = addTen(y);
 doc.text(10, y, 'Orginization');
 doc.setFontStyle('italic');
 doc.text('January 2020 - Present',200, y, 'right');
-y = addFive(y); 
-doc.text(10, y, 'Job Title');
-doc.setFontStyle('normal');
-y = addFive(y); 
-doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
-y = addFive(y); 
-doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
-
-doc.setFontSize(12);
-doc.setFontStyle('bold');
-y = addTen(y);
-doc.text(10, y, 'Orginization');
-doc.setFontStyle('italic');
-doc.text('January 2020 - Present',200, y, 'right');
-y = addFive(y); 
-doc.text(10, y, 'Job Title');
-doc.setFontStyle('normal');
-y = addFive(y); 
-doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
-y = addFive(y); 
-doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
-
-
-doc.setFontSize(12);
-doc.setFontStyle('bold');
-y = addTen(y); 
-doc.text(10, y, 'Orginization');
-doc.setFontStyle('italic');
-doc.text('January 2020 - Present',200, y, 'right');
 y = addFive(y);
 doc.text(10, y, 'Job Title');
 doc.setFontStyle('normal');
@@ -130,53 +167,158 @@ doc.text(10, y, ' • Developed and maintained software applications using langu
 y = addFive(y);
 doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
 
-//Projects
-doc.setFontSize(16);
-doc.setFontStyle('bold');
-y = addThirteen(y); 
-doc.text(10, y, 'Projects');
 
-doc.setFontSize(12);
-doc.setFontStyle('bold');
-y = addTen(y);
-doc.text(10, y, 'Project Name');
-doc.setFontStyle('italic');
-doc.text('January 2020 - Present',200, y, 'right');
-doc.setFontStyle('normal');
-y = addFive(y);
-doc.text(10, y, ' • Description 1');
-y = addFive(y);
-doc.text(10, y, ' • Description 2');
-y = addFive(y);
-doc.text(10, y, ' • Description 3');
 
-doc.setFontSize(12);
-doc.setFontStyle('bold');
-y = addTen(y);
-doc.text(10, y, 'Project Name');
-doc.setFontStyle('italic');
-doc.text('January 2020 - Present',200, y, 'right');
-doc.setFontStyle('normal');
-y = addFive(y);
-doc.text(10, y, ' • Description 1');
-y = addFive(y);
-doc.text(10, y, ' • Description 2');
-y = addFive(y);
-doc.text(10, y, ' • Description 3');
+if (Project1 != "")
+{
+    //Projects
+    doc.setFontSize(16);
+    doc.setFontStyle('bold');
+    y = addThirteen(y); 
+    doc.text(10, y, 'Projects');
 
-doc.setFontSize(12);
-doc.setFontStyle('bold');
-y= addTen(y);
-doc.text(10, y, 'Project Name');
-doc.setFontStyle('italic');
-doc.text('January 2020 - Present',200, y, 'right');
-doc.setFontStyle('normal');
-y = addFive(y);
-doc.text(10, y, ' • Description 1');
-y = addFive(y);
-doc.text(10, y, ' • Description 2');
-y = addFive(y);
-doc.text(10, y, ' • Description 3');
+    doc.setFontSize(12);
+    doc.setFontStyle('bold');
+    y = addTen(y);
+    doc.text(10, y, Project1);
+   
+    if (P1_Description1 != "")
+    {
+        doc.setFontStyle('normal');
+        y = addFive(y);
+        doc.text(10, y, ' • '+P1_Description1);
+    }
+
+    if (document.getElementById('P1_Description2') !== null)
+    {
+        
+        var id = document.getElementById('P1_Description2').value; 
+        if (id != "")
+        {
+            doc.setFontStyle('normal');
+            y = addFive(y);
+            doc.text(10, y, ' • '+id);
+        }
+    }
+    else{}
+
+    if (document.getElementById('P1_Description3') !== null)
+    {
+        
+        var id = document.getElementById('P1_Description3').value; 
+        if (id != "")
+        {
+            doc.setFontStyle('normal');
+            y = addFive(y);
+            doc.text(10, y, ' • '+id);
+        }
+    }
+}
+
+
+if (document.getElementById('Project2') !== null)
+{
+    var newProj = document.getElementById('Project2').value;
+    if (newProj != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('bold');
+        y = addTen(y);
+        doc.text(10, y, newProj);
+
+        if (document.getElementById('P2_Description1') !== null)
+        {
+            
+                var id = document.getElementById('P2_Description1').value; 
+                if (id != "")
+                {
+                    doc.setFontStyle('normal');
+                    y = addFive(y);
+                    doc.text(10, y, ' • '+id);
+                }
+        }
+        
+
+        if (document.getElementById('P2_Description2') !== null)
+        {
+            
+                var id = document.getElementById('P2_Description2').value; 
+                if (id != "")
+                {
+                    doc.setFontStyle('normal');
+                    y = addFive(y);
+                    doc.text(10, y, ' • '+id);
+                }
+         }
+        
+
+        if (document.getElementById('P2_Description3') !== null)
+        {
+            
+                var id = document.getElementById('P2_Description3').value; 
+                if (id != "")
+                {
+                    doc.setFontStyle('normal');
+                    y = addFive(y);
+                    doc.text(10, y, ' • '+id);
+                }
+        }
+        
+    }
+}
+
+
+if (document.getElementById('Project3') !== null)
+{
+    var newProj = document.getElementById('Project3').value;
+    if (newProj != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('bold');
+        y = addTen(y);
+        doc.text(10, y, newProj);
+
+        if (document.getElementById('P3_Description1') !== null)
+        {
+            
+                var id = document.getElementById('P3_Description1').value; 
+                if (id != "")
+                {
+                    doc.setFontStyle('normal');
+                    y = addFive(y);
+                    doc.text(10, y, ' • '+id);
+                }
+        }
+        
+
+        if (document.getElementById('P3_Description2') !== null)
+        {
+            
+                var id = document.getElementById('P3_Description2').value; 
+                if (id != "")
+                {
+                    doc.setFontStyle('normal');
+                    y = addFive(y);
+                    doc.text(10, y, ' • '+id);
+                }
+         }
+        
+
+        if (document.getElementById('P3_Description3') !== null)
+        {
+            
+                var id = document.getElementById('P3_Description3').value; 
+                if (id != "")
+                {
+                    doc.setFontStyle('normal');
+                    y = addFive(y);
+                    doc.text(10, y, ' • '+id);
+                }
+        }
+        
+    }
+}
+
 
 // Save the PDF document
 doc.save('resume.pdf');
