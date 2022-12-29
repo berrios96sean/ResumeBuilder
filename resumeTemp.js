@@ -1,5 +1,5 @@
 // First, create a new instance of the jsPDF library
-
+var formCounter = 1;
 
 function downloadPDF()
 {
@@ -143,4 +143,41 @@ function clearFormValues() {
       element.value = '';
     });
   }
+
+  function addForm() {
+    // Increment the form counter
+    formCounter++;
+  
+      // Show an alert if more than three jobs are added
+  if (formCounter > 3) {
+    alert('You cannot add more than three jobs!');
+    return;
+  }
+  
+    // Get the button element
+    var button = document.querySelector('#add-button');
+  
+    // Create the new forms HTML as a string, using the form counter to update the IDs and names and adding the <h3> element
+    var newFormsHTML = '<h3>Job ' + formCounter + '</h3>' +
+                       '<form>' +
+                       '  <label for="Company' + formCounter + '">Company:</label><br>' +
+                       '  <input type="text" id="Company' + formCounter + '" name="Company' + formCounter + '"><br>' +
+                       '</form>' +
+                       '<form>' +
+                       '  <label for="Job_Title' + formCounter + '">Job Title:</label><br>' +
+                       '  <input type="text" id="Job_Title' + formCounter + '" name="Job_Title' + formCounter + '"><br>' +
+                       '</form>' +
+                       '<form>' +
+                       '  <label for="J' + formCounter + '_Started">Date Started:</label><br>' +
+                       '  <input type="text" id="J' + formCounter + '_Started" name="J' + formCounter + '_Started"><br>' +
+                       '</form>' +
+                       '<form>' +
+                       '  <label for="J' + formCounter + '_Ended">Date Ended:</label><br>' +
+                       '  <input type="text" id="J' + formCounter + '_Ended" name="J' + formCounter + '_Ended"><br>' +
+                       '</form>';
+  
+    // Insert the new forms HTML before the button element
+    button.insertAdjacentHTML('beforebegin', newFormsHTML);
+  }
+  
   

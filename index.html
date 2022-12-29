@@ -26,11 +26,11 @@
       <div class="row">
         <div class="column">
             <form>
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name"><br>
+                <label for="name"></label><br>
+                <input type="text" id="name" name="name" placeholder="Name"><br>
               </form>   
               <form>
-                <label for="Street_Address">Street_Address:</label><br>
+                <label for="Street_Address">Address:</label><br>
                 <input type="text" id="Street_Address" name="Street_Address"><br>
               </form>   
               <form>
@@ -48,13 +48,66 @@
                 <input type="text" id="Zip" name="Zip"><br>
               </form>   
               <form>
-                <label for="Phone_Num">Phone_Num:</label><br>
+                <label for="Phone_Num">Phone Number:</label><br>
                 <input type="text" id="Phone_Num" name="Phone_Num"><br>
               </form>   
               <form>
                 <label for="Email">Email:</label><br>
                 <input type="text" id="Email" name="Email"><br>
               </form> 
+        </div>
+      </div>
+      <h2>Education</h2>
+      <div class="row">
+        <div class="column">
+          <form>
+            <label for="University">University:</label><br>
+            <input type="text" id="University" name="University"><br>
+          </form>   
+          <form>
+            <label for="Degree">Degree:</label><br>
+            <input type="text" id="Degree" name="Degree"><br>
+          </form>   
+          <form>
+            <label for="GPA">GPA:</label><br>
+            <input type="text" id="GPA" name="GPA"><br>
+          </form>  
+        </div>
+        <div class="column">
+          <form>
+            <label for="School_Started">Date Started:</label><br>
+            <input type="text" id="School_Started" name="School_Started"><br>
+          </form>  
+          <form>
+            <label for="School_Ended">Date Ended:</label><br>
+            <input type="text" id="School_Ended" name="School_Ended"><br>
+          </form>  
+        </div>
+      </div>
+      <h2>Work Experience</h2>
+      <div class="row">
+        <div class="column">
+          <h3>Job 1</h3>
+          <form>
+            <label for="Company">Company:</label><br>
+            <input type="text" id="Company" name="Company"><br>
+          </form>   
+          <form>
+            <label for="Job_Title">Job Title:</label><br>
+            <input type="text" id="Job_Title" name="Job_Title"><br>
+          </form>   
+          <form>
+            <label for="J1_Started">Date Started:</label><br>
+            <input type="text" id="J1_Started" name="J1_Started"><br>
+          </form>  
+          <form>
+            <label for="J1_Ended">Date Ended:</label><br>
+            <input type="text" id="J1_Ended" name="J1_Ended"><br>
+          </form>  
+          <button type="button" onclick="addForm()" id="add-button">+</button>
+        </div>
+
+        <div class="column">
         </div>
       </div>
  
