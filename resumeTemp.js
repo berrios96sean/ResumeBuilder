@@ -1,9 +1,10 @@
 // First, create a new instance of the jsPDF library
-var doc = new jsPDF();
+
 
 function downloadPDF()
 {
-    
+  
+    var doc = new jsPDF();
 var text = document.getElementById('name').value;
 var street_address = document.getElementById('Street_Address').value;
 var City = document.getElementById('City').value;
@@ -29,7 +30,9 @@ doc.text(text, 105,20-5, "center");
 doc.setFontSize(12);
 doc.setFontStyle('normal');
 doc.text(street_address, 105,25-5, "center");
-doc.text(City+comma+State+comma+Zip, 105,30-5, "center");
+if (City != "" || State != "" || Zip != "") {
+    doc.text(City + comma + State + comma + Zip, 105, 30 - 5, "center");
+  }  
 doc.text(Phone_Num, 105,35-5, "center");
 doc.text(Email,105, 40-5,"center");
 
@@ -126,4 +129,18 @@ doc.text(10, 273-5, ' • Description 3');
 
 // Save the PDF document
 doc.save('resume.pdf');
+
+//clearFormValues(); 
+
 }
+
+function clearFormValues() {
+    // Get all the form elements on the page
+    const formElements = document.querySelectorAll('form input, form textarea, form select');
+  
+    // Loop through all the form elements and set their value to an empty string
+    formElements.forEach(element => {
+      element.value = '';
+    });
+  }
+  
