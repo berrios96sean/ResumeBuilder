@@ -12,7 +12,6 @@
     <header>
       <h1>Resume Builder</h1>
     </header>
-
     <main>
       <h2>Welcome to Resume Builder</h2>
       <p>Use this tool to create and customize professional resumes in minutes.</p>
@@ -68,15 +67,27 @@
           </form>  
         </div>
       </div>
+      <h2>Skills</h2>
+    </form>   
+    <form>
+      <input type="text" id="Programming_Languages" name="Programming_Languages" placeholder="Programming Languages"><br>
+    </form>   
+    <form>
+      <input type="text" id="Tools" name="Tools" placeholder="Tools/Frameworks"><br>
+    </form>  
       <h2>Work Experience</h2>
-      <div class="row">
-        <div class="column">
           <h3>Job 1</h3>
           <form>
             <input type="text" id="Company1" name="Company1"placeholder="Company"><br>
           </form>   
           <form>
             <input type="text" id="Job_Title1" name="Job_Title1"placeholder="Job Title"><br>
+          </form>
+          <form>
+            <input type="text" id="W1_Description1" name="W1_Description1"placeholder="Description"><br>
+          </form>
+          <form>
+            <input type="text" id="W1_Description2" name="W1_Description2"placeholder="Description"><br>
           </form>
           <p class="date">Date Started</p>   
           <form>
@@ -86,12 +97,7 @@
           <form>
             <input type="date" id="J1_Ended" name="J1_Ended" title="Date Ended"><br>
           </form>  
-          <button type="button" onclick="addForm()" id="add-button" title="Add another Work Experience">+</button>
-        </div>
-
-        <div class="column">
-        </div>
-      </div>
+        <button type="button" onclick="addForm()" id="add-button" title="Add another Work Experience">+</button>
       <h2>Projects</h2>
           <h3>Project 1</h3>
             <form >

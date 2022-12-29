@@ -27,6 +27,15 @@ var Company_One = document.getElementById('Company1').value;
 var Job_Title_One = document.getElementById('Job_Title1').value;
 var Job_One_Started = document.getElementById('J1_Started').value;
 var Job_One_Ended = document.getElementById('J1_Ended').value;
+var W1_Description1 = document.getElementById('W1_Description1').value;
+var W1_Description2 = document.getElementById('W1_Description2').value;
+var Programming_languages = document.getElementById('Programming_Languages').value;
+var Tools = document.getElementById('Tools').value;
+var University = document.getElementById('University').value;
+var Degree = document.getElementById('Degree').value;
+var GPA = document.getElementById('GPA').value;
+var School_Started = document.getElementById('School_Started').value;
+var School_Ended = document.getElementById('School_Ended').value;
 
 //var P1_Description2 = document.getElementById('P1_Description2').value;
 //var P1_Description3 = document.getElementById('P1_Description3').value;
@@ -63,33 +72,77 @@ doc.text(Email,105, y,"center");
 y = addFive(y); 
 doc.line(10, y, 200, y);
 
-// Add the job seeker's education
-y = addTen(y); 
-doc.setFontSize(16);
-doc.setFontStyle('bold');
-doc.text(10, y, 'Education');
+if (University != "")
+{
+    // Add the job seeker's education
+    y = addTen(y); 
+    doc.setFontSize(16);
+    doc.setFontStyle('bold');
+    doc.text(10, y, 'Education');
 
-doc.setFontSize(12);
-doc.setFontStyle('normal');
-y = addSeven(y); 
-doc.text(10, y, 'University of Technology');
-doc.text('September 2016 - June 2020',200, y, "right");
-y = addFive(y); 
-doc.text(10, y, 'Bachelor of Science in Computer Science');
-y = addFive(y); 
-doc.text(10, y, 'GPA: '+"4.0");
+    doc.setFontSize(12);
+    doc.setFontStyle('italic');
+    y = addSeven(y);
+    doc.text(10, y, University);
+    if (School_Ended != "" && School_Started != "")
+    {
+        var date = new Date(School_Started);
+        var date2 = new Date(School_Ended);
+        // Get the month and year of the date as a string
+        var month = date.toLocaleDateString('en-US', { month: 'long' });
+        var month2 = date2.toLocaleDateString('en-US', { month: 'long' });
+        var year = date.getFullYear();
+        var year2 = date2.getFullYear();
 
-doc.setFontSize(16);
-doc.setFontStyle('bold');
-y = addThirteen(y);
-doc.text(10, y, 'Skills');
+        // Format the date as a string in the desired format
+        var formattedDate = month + ' ' + year;
+        var formattedDate2 = month2 + ' ' + year2;
+        doc.setFontSize(12);
+        doc.setFontStyle('italic');
+        doc.text(formattedDate+' - '+formattedDate2,200, y, "right");
+    }
 
-doc.setFontSize(12);
-doc.setFontStyle('normal');
-y = addSeven(y); 
-doc.text(10, y, 'Programming Languages: ');
-y = addFive(y); 
-doc.text(10, y, 'Tools and Frameworks: ');
+    if (Degree != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('normal');
+        y = addFive(y); 
+        doc.text(10, y, Degree);
+    }
+
+    if (GPA != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('normal');
+        y = addFive(y); 
+        doc.text(10, y, 'GPA: '+GPA);
+    }
+
+}
+
+if (Programming_languages != "" || Tools != "")
+{
+    doc.setFontSize(16);
+    doc.setFontStyle('bold');
+    y = addThirteen(y);
+    doc.text(10, y, 'Skills');
+    if (Programming_languages != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('normal');
+        y = addSeven(y); 
+        doc.text(10, y, 'Programming Languages: '+Programming_languages);
+    }
+    if (Tools != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('normal');
+        y = addSeven(y); 
+        doc.text(10, y, 'Tools and Frameworks: '+Tools);
+    }
+
+
+}
 
 
 
@@ -130,43 +183,158 @@ if (Company_One != "")
         doc.text(10, y, Job_Title_One);
     }
 
-    doc.setFontStyle('normal');
-    y = addFive(y); 
-    doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
-    y = addFive(y); 
-    doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+    if (W1_Description1 != "")
+    {
+        doc.setFontStyle('normal');
+        y = addFive(y); 
+        doc.text(10, y, ' • '+W1_Description1);    
+    }
+
+    if (W1_Description2 != "")
+    {
+        doc.setFontStyle('normal');
+        y = addFive(y); 
+        doc.text(10, y, ' • '+W1_Description2);    
+    }
 }
 
+if (document.getElementById('Company2') !== null)
+{
+    var company = document.getElementById('Company2').value;
+    if (company != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('bold');
+        y = addTen(y);
+        doc.text(10, y, company);
+    }
+    if (document.getElementById('J2_Started') !== null &&
+        document.getElementById('J2_Ended') !== null)
+        {
+            var start = document.getElementById('J2_Started').value;
+            var end = document.getElementById('J2_Ended').value;
 
-doc.setFontSize(12);
-doc.setFontStyle('bold');
-y = addTen(y);
-doc.text(10, y, 'Orginization');
-doc.setFontStyle('italic');
-doc.text('January 2020 - Present',200, y, 'right');
-y = addFive(y); 
-doc.text(10, y, 'Job Title');
-doc.setFontStyle('normal');
-y = addFive(y); 
-doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
-y = addFive(y); 
-doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+            if (start != "" && end != "")
+            {
+                var date = new Date(start);
+                var date2 = new Date(end);
+                // Get the month and year of the date as a string
+                var month = date.toLocaleDateString('en-US', { month: 'long' });
+                var month2 = date2.toLocaleDateString('en-US', { month: 'long' });
+                var year = date.getFullYear();
+                var year2 = date2.getFullYear();
+    
+                var formattedDate = month + ' ' + year;
+                var formattedDate2 = month2 + ' ' + year2;
+    
+                doc.setFontStyle('italic');
+                doc.text(formattedDate+' - '+formattedDate2,200, y, 'right');
+            }
+        }
 
+        if (document.getElementById('Job_Title2') != null)
+        {
+            var job = document.getElementById('Job_Title2').value;
+            if (job != "")
+            {
+                doc.setFontStyle('italic');
+                y = addFive(y); 
+                doc.text(10, y,job );
+            }
+        }
 
-doc.setFontSize(12);
-doc.setFontStyle('bold');
-y = addTen(y); 
-doc.text(10, y, 'Orginization');
-doc.setFontStyle('italic');
-doc.text('January 2020 - Present',200, y, 'right');
-y = addFive(y);
-doc.text(10, y, 'Job Title');
-doc.setFontStyle('normal');
-y = addFive(y);
-doc.text(10, y, ' • Developed and maintained software applications using languages such as Java and Python');
-y = addFive(y);
-doc.text(10, y, ' • Collaborated with cross-functional teams to identify and solve technical challenges');
+        if (document.getElementById('W2_Description1') != null)
+        {
+            var desc = document.getElementById('W2_Description1').value;
+            if (desc != "")
+            {
+                doc.setFontStyle('normal');
+                y = addFive(y); 
+                doc.text(10, y,' • '+desc );
+            }
+        }
 
+        if (document.getElementById('W2_Description2') != null)
+        {
+            var desc = document.getElementById('W2_Description2').value;
+            if (desc != "")
+            {
+                doc.setFontStyle('normal');
+                y = addFive(y); 
+                doc.text(10, y,' • '+desc );
+            }
+        }
+
+}
+
+if (document.getElementById('Company3') !== null)
+{
+    var company = document.getElementById('Company3').value;
+    if (company != "")
+    {
+        doc.setFontSize(12);
+        doc.setFontStyle('bold');
+        y = addTen(y);
+        doc.text(10, y, company);
+    }
+    if (document.getElementById('J3_Started') !== null &&
+        document.getElementById('J3_Ended') !== null)
+        {
+            var start = document.getElementById('J3_Started').value;
+            var end = document.getElementById('J3_Ended').value;
+
+            if (start != "" && end != "")
+            {
+                var date = new Date(start);
+                var date2 = new Date(end);
+                // Get the month and year of the date as a string
+                var month = date.toLocaleDateString('en-US', { month: 'long' });
+                var month2 = date2.toLocaleDateString('en-US', { month: 'long' });
+                var year = date.getFullYear();
+                var year2 = date2.getFullYear();
+    
+                var formattedDate = month + ' ' + year;
+                var formattedDate2 = month2 + ' ' + year2;
+    
+                doc.setFontStyle('italic');
+                doc.text(formattedDate+' - '+formattedDate2,200, y, 'right');
+            }
+        }
+
+        if (document.getElementById('Job_Title3') != null)
+        {
+            var job = document.getElementById('Job_Title3').value;
+            if (job != "")
+            {
+                doc.setFontStyle('italic');
+                y = addFive(y); 
+                doc.text(10, y,job );
+            }
+        }
+
+        if (document.getElementById('W3_Description1') != null)
+        {
+            var desc = document.getElementById('W3_Description1').value;
+            if (desc != "")
+            {
+                doc.setFontStyle('normal');
+                y = addFive(y); 
+                doc.text(10, y,' • '+desc );
+            }
+        }
+
+        if (document.getElementById('W3_Description2') != null)
+        {
+            var desc = document.getElementById('W3_Description2').value;
+            if (desc != "")
+            {
+                doc.setFontStyle('normal');
+                y = addFive(y); 
+                doc.text(10, y,' • '+desc );
+            }
+        }
+
+}
 
 
 if (Project1 != "")
@@ -358,6 +526,12 @@ function clearFormValues() {
                        '<form>' +
                        '  <input type="text" id="Job_Title' + formCounter + '" name="Job_Title' + formCounter + '" placeholder="Job Title"><br>' +
                        '</form>' +
+                       '<form>' +
+                       '<input type="text" id="W' + formCounter + '_Description1" name="W1_Description1"placeholder="Description"><br>'+
+                       '</form>'+
+                       '<form>'+
+                       '<input type="text" id="W' + formCounter + '_Description2" name="W1_Description2"placeholder="Description"><br>'+
+                       '</form>'+
                        '<p class="date">Date Started</p>' +
                        '<form>' +
                        '  <input type="date" id="J' + formCounter + '_Started" name="J' + formCounter + '_Started" title="Date Started"><br>' +
@@ -459,7 +633,8 @@ function addDescr() {
                       '<form>' +
                       '  <input type="text" id="P' + projCounter + '_Description1" name="P' + projCounter + '_Description1" placeholder="Description"><br>' +
                       '  <button type="button" onclick="addDescr' + projCounter + '()" id="add-descr' + projCounter + '" title="Add another Description">+</button>' +
-                      '</form>';
+                      '</form>'
+                      ;
   
     // Get the initial project form element
     //var initialProjForm = document.querySelector('#f'+formNum+'').parentNode;
