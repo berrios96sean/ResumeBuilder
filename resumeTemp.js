@@ -50,23 +50,45 @@ doc.setFontStyle('normal');
 
 
 // Add the name of the job seeker at the top of the page
-doc.setFontSize(14);
-doc.setFontStyle('bold');
-doc.text(text, 105,y, "center");
+if (text != "")
+{
+    doc.setFontSize(14);
+    doc.setFontStyle('bold');
+    doc.text(text, 105,y, "center");
+}
 
 // Add the job seeker's contact information below their name
-doc.setFontSize(12);
-doc.setFontStyle('normal');
-y = addFive(y); 
-doc.text(street_address, 105,y, "center");
+if (street_address != "")
+{
+    doc.setFontSize(12);
+    doc.setFontStyle('normal');
+    y = addFive(y); 
+    doc.text(street_address, 105,y, "center");
+}
+
 if (City != "" || State != "" || Zip != "") {
+    doc.setFontSize(12);
+    doc.setFontStyle('normal');
     y = addFive(y); 
     doc.text(City + comma + State + comma + Zip, 105, y, "center");
   }  
-  y = addFive(y); 
-doc.text(Phone_Num, 105,y, "center");
-y = addFive(y); 
-doc.text(Email,105, y,"center");
+
+  if (Phone_Num != "")
+  {
+    doc.setFontSize(12);
+    doc.setFontStyle('normal');
+    y = addFive(y); 
+    doc.text(Phone_Num, 105,y, "center");
+  }
+
+  if (Email != "")
+  {
+      doc.setFontSize(12);
+      doc.setFontStyle('normal');
+      y = addFive(y); 
+      doc.text(Email,105, y,"center");
+  }
+
 
 // Add a horizontal line to visually separate the contact information from the rest of the resume
 y = addFive(y); 
@@ -124,7 +146,7 @@ if (Programming_languages != "" || Tools != "")
 {
     doc.setFontSize(16);
     doc.setFontStyle('bold');
-    y = addThirteen(y);
+    y = addTen(y);
     doc.text(10, y, 'Skills');
     if (Programming_languages != "")
     {
@@ -151,7 +173,7 @@ if (Company_One != "")
     //Add the job seeker's work experience
     doc.setFontSize(16);
     doc.setFontStyle('bold');
-    y = addThirteen(y);
+    y = addTen(y);
     doc.text(10, y, 'Work Experience');
 
     doc.setFontSize(12);
@@ -183,19 +205,43 @@ if (Company_One != "")
         doc.text(10, y, Job_Title_One);
     }
 
-    if (W1_Description1 != "")
-    {
+    if (W1_Description1 != "") {
         doc.setFontStyle('normal');
-        y = addFive(y); 
-        doc.text(10, y, ' • '+W1_Description1);    
-    }
+        y = addFive(y);
+      
+        // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+        var lines = doc.splitTextToSize(W1_Description1, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+      
+        // Add each line of text to the document, with the bullet point only at the beginning
+        for (var i = 0; i < lines.length; i++) {
+          if (i == 0) {
+            doc.text(10, y, ' • ' + lines[i]);
+          } else {
+            doc.text(10, y, lines[i]);
+          }
+          y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+        }
+      }
+      
+      
 
-    if (W1_Description2 != "")
-    {
+      if (W1_Description2 != "") {
         doc.setFontStyle('normal');
-        y = addFive(y); 
-        doc.text(10, y, ' • '+W1_Description2);    
-    }
+        //y = addFive(y);
+      
+        // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+        var lines = doc.splitTextToSize(W1_Description2, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+      
+        // Add each line of text to the document, with the bullet point only at the beginning
+        for (var i = 0; i < lines.length; i++) {
+          if (i == 0) {
+            doc.text(10, y, ' • ' + lines[i]);
+          } else {
+            doc.text(10, y, lines[i]);
+          }
+          y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+        }
+      }
 }
 
 if (document.getElementById('Company2') !== null)
@@ -205,7 +251,7 @@ if (document.getElementById('Company2') !== null)
     {
         doc.setFontSize(12);
         doc.setFontStyle('bold');
-        y = addTen(y);
+        y = addFive(y);
         doc.text(10, y, company);
     }
     if (document.getElementById('J2_Started') !== null &&
@@ -246,23 +292,45 @@ if (document.getElementById('Company2') !== null)
         if (document.getElementById('W2_Description1') != null)
         {
             var desc = document.getElementById('W2_Description1').value;
-            if (desc != "")
-            {
+            if (desc != "") {
                 doc.setFontStyle('normal');
-                y = addFive(y); 
-                doc.text(10, y,' • '+desc );
-            }
+                y = addFive(y);
+              
+                // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                var lines = doc.splitTextToSize(desc, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+              
+                // Add each line of text to the document, with the bullet point only at the beginning
+                for (var i = 0; i < lines.length; i++) {
+                  if (i == 0) {
+                    doc.text(10, y, ' • ' + lines[i]);
+                  } else {
+                    doc.text(10, y, lines[i]);
+                  }
+                  y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                }
+              }
         }
 
         if (document.getElementById('W2_Description2') != null)
         {
             var desc = document.getElementById('W2_Description2').value;
-            if (desc != "")
-            {
+            if (desc != "") {
                 doc.setFontStyle('normal');
-                y = addFive(y); 
-                doc.text(10, y,' • '+desc );
-            }
+               // y = addFive(y);
+              
+                // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                var lines = doc.splitTextToSize(desc, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+              
+                // Add each line of text to the document, with the bullet point only at the beginning
+                for (var i = 0; i < lines.length; i++) {
+                  if (i == 0) {
+                    doc.text(10, y, ' • ' + lines[i]);
+                  } else {
+                    doc.text(10, y, lines[i]);
+                  }
+                  y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                }
+              }
         }
 
 }
@@ -274,7 +342,7 @@ if (document.getElementById('Company3') !== null)
     {
         doc.setFontSize(12);
         doc.setFontStyle('bold');
-        y = addTen(y);
+        y = addFive(y);
         doc.text(10, y, company);
     }
     if (document.getElementById('J3_Started') !== null &&
@@ -315,23 +383,45 @@ if (document.getElementById('Company3') !== null)
         if (document.getElementById('W3_Description1') != null)
         {
             var desc = document.getElementById('W3_Description1').value;
-            if (desc != "")
-            {
+            if (desc != "") {
                 doc.setFontStyle('normal');
-                y = addFive(y); 
-                doc.text(10, y,' • '+desc );
-            }
+                y = addFive(y);
+              
+                // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                var lines = doc.splitTextToSize(desc, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+              
+                // Add each line of text to the document, with the bullet point only at the beginning
+                for (var i = 0; i < lines.length; i++) {
+                  if (i == 0) {
+                    doc.text(10, y, ' • ' + lines[i]);
+                  } else {
+                    doc.text(10, y, lines[i]);
+                  }
+                  y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                }
+              }
         }
 
         if (document.getElementById('W3_Description2') != null)
         {
             var desc = document.getElementById('W3_Description2').value;
-            if (desc != "")
-            {
+            if (desc != "") {
                 doc.setFontStyle('normal');
-                y = addFive(y); 
-                doc.text(10, y,' • '+desc );
-            }
+                //y = addFive(y);
+              
+                // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                var lines = doc.splitTextToSize(desc, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+              
+                // Add each line of text to the document, with the bullet point only at the beginning
+                for (var i = 0; i < lines.length; i++) {
+                  if (i == 0) {
+                    doc.text(10, y, ' • ' + lines[i]);
+                  } else {
+                    doc.text(10, y, lines[i]);
+                  }
+                  y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                }
+              }
         }
 
 }
@@ -342,31 +432,53 @@ if (Project1 != "")
     //Projects
     doc.setFontSize(16);
     doc.setFontStyle('bold');
-    y = addThirteen(y); 
+    y = addSeven(y); 
     doc.text(10, y, 'Projects');
 
     doc.setFontSize(12);
     doc.setFontStyle('bold');
-    y = addTen(y);
+    y = addSeven(y);
     doc.text(10, y, Project1);
    
-    if (P1_Description1 != "")
-    {
+    if (P1_Description1 != "") {
         doc.setFontStyle('normal');
         y = addFive(y);
-        doc.text(10, y, ' • '+P1_Description1);
-    }
+      
+        // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+        var lines = doc.splitTextToSize(P1_Description1, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+      
+        // Add each line of text to the document, with the bullet point only at the beginning
+        for (var i = 0; i < lines.length; i++) {
+          if (i == 0) {
+            doc.text(10, y, ' • ' + lines[i]);
+          } else {
+            doc.text(10, y, lines[i]);
+          }
+          y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+        }
+      }
 
     if (document.getElementById('P1_Description2') !== null)
     {
         
         var id = document.getElementById('P1_Description2').value; 
-        if (id != "")
-        {
+        if (id != "") {
             doc.setFontStyle('normal');
-            y = addFive(y);
-            doc.text(10, y, ' • '+id);
-        }
+            //y = addFive(y);
+          
+            // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+            var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+          
+            // Add each line of text to the document, with the bullet point only at the beginning
+            for (var i = 0; i < lines.length; i++) {
+              if (i == 0) {
+                doc.text(10, y, ' • ' + lines[i]);
+              } else {
+                doc.text(10, y, lines[i]);
+              }
+              y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+            }
+          }
     }
     else{}
 
@@ -374,12 +486,23 @@ if (Project1 != "")
     {
         
         var id = document.getElementById('P1_Description3').value; 
-        if (id != "")
-        {
+        if (id != "") {
             doc.setFontStyle('normal');
-            y = addFive(y);
-            doc.text(10, y, ' • '+id);
-        }
+           // y = addFive(y);
+          
+            // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+            var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+          
+            // Add each line of text to the document, with the bullet point only at the beginning
+            for (var i = 0; i < lines.length; i++) {
+              if (i == 0) {
+                doc.text(10, y, ' • ' + lines[i]);
+              } else {
+                doc.text(10, y, lines[i]);
+              }
+              y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+            }
+          }
     }
 }
 
@@ -391,19 +514,30 @@ if (document.getElementById('Project2') !== null)
     {
         doc.setFontSize(12);
         doc.setFontStyle('bold');
-        y = addTen(y);
+        y = addSeven(y);
         doc.text(10, y, newProj);
 
         if (document.getElementById('P2_Description1') !== null)
         {
             
                 var id = document.getElementById('P2_Description1').value; 
-                if (id != "")
-                {
+                if (id != "") {
                     doc.setFontStyle('normal');
                     y = addFive(y);
-                    doc.text(10, y, ' • '+id);
-                }
+                  
+                    // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                    var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+                  
+                    // Add each line of text to the document, with the bullet point only at the beginning
+                    for (var i = 0; i < lines.length; i++) {
+                      if (i == 0) {
+                        doc.text(10, y, ' • ' + lines[i]);
+                      } else {
+                        doc.text(10, y, lines[i]);
+                      }
+                      y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                    }
+                  }
         }
         
 
@@ -411,12 +545,23 @@ if (document.getElementById('Project2') !== null)
         {
             
                 var id = document.getElementById('P2_Description2').value; 
-                if (id != "")
-                {
+                if (id != "") {
                     doc.setFontStyle('normal');
-                    y = addFive(y);
-                    doc.text(10, y, ' • '+id);
-                }
+                    //y = addFive(y);
+                  
+                    // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                    var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+                  
+                    // Add each line of text to the document, with the bullet point only at the beginning
+                    for (var i = 0; i < lines.length; i++) {
+                      if (i == 0) {
+                        doc.text(10, y, ' • ' + lines[i]);
+                      } else {
+                        doc.text(10, y, lines[i]);
+                      }
+                      y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                    }
+                  }
          }
         
 
@@ -424,12 +569,23 @@ if (document.getElementById('Project2') !== null)
         {
             
                 var id = document.getElementById('P2_Description3').value; 
-                if (id != "")
-                {
+                if (id != "") {
                     doc.setFontStyle('normal');
-                    y = addFive(y);
-                    doc.text(10, y, ' • '+id);
-                }
+                    //y = addFive(y);
+                  
+                    // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                    var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+                  
+                    // Add each line of text to the document, with the bullet point only at the beginning
+                    for (var i = 0; i < lines.length; i++) {
+                      if (i == 0) {
+                        doc.text(10, y, ' • ' + lines[i]);
+                      } else {
+                        doc.text(10, y, lines[i]);
+                      }
+                      y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                    }
+                  }
         }
         
     }
@@ -443,19 +599,30 @@ if (document.getElementById('Project3') !== null)
     {
         doc.setFontSize(12);
         doc.setFontStyle('bold');
-        y = addTen(y);
+        y = addSeven(y);
         doc.text(10, y, newProj);
 
         if (document.getElementById('P3_Description1') !== null)
         {
             
                 var id = document.getElementById('P3_Description1').value; 
-                if (id != "")
-                {
+                if (id != "") {
                     doc.setFontStyle('normal');
                     y = addFive(y);
-                    doc.text(10, y, ' • '+id);
-                }
+                  
+                    // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                    var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+                  
+                    // Add each line of text to the document, with the bullet point only at the beginning
+                    for (var i = 0; i < lines.length; i++) {
+                      if (i == 0) {
+                        doc.text(10, y, ' • ' + lines[i]);
+                      } else {
+                        doc.text(10, y, lines[i]);
+                      }
+                      y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                    }
+                  }
         }
         
 
@@ -463,12 +630,23 @@ if (document.getElementById('Project3') !== null)
         {
             
                 var id = document.getElementById('P3_Description2').value; 
-                if (id != "")
-                {
+                if (id != "") {
                     doc.setFontStyle('normal');
-                    y = addFive(y);
-                    doc.text(10, y, ' • '+id);
-                }
+                    //y = addFive(y);
+                  
+                    // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                    var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+                  
+                    // Add each line of text to the document, with the bullet point only at the beginning
+                    for (var i = 0; i < lines.length; i++) {
+                      if (i == 0) {
+                        doc.text(10, y, ' • ' + lines[i]);
+                      } else {
+                        doc.text(10, y, lines[i]);
+                      }
+                      y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                    }
+                  }
          }
         
 
@@ -476,12 +654,23 @@ if (document.getElementById('Project3') !== null)
         {
             
                 var id = document.getElementById('P3_Description3').value; 
-                if (id != "")
-                {
+                if (id != "") {
                     doc.setFontStyle('normal');
-                    y = addFive(y);
-                    doc.text(10, y, ' • '+id);
-                }
+                    //y = addFive(y);
+                  
+                    // Split the text in W1_Description1 into lines that fit within the maximum width of the page
+                    var lines = doc.splitTextToSize(id, doc.internal.pageSize.width - 20); // 20 is for left and right margins
+                  
+                    // Add each line of text to the document, with the bullet point only at the beginning
+                    for (var i = 0; i < lines.length; i++) {
+                      if (i == 0) {
+                        doc.text(10, y, ' • ' + lines[i]);
+                      } else {
+                        doc.text(10, y, lines[i]);
+                      }
+                      y = addFive(y); // Move the cursor down by 5 units after adding each line of text
+                    }
+                  }
         }
         
     }
