@@ -97,7 +97,7 @@ doc.line(10, y, 200, y);
 if (University != "")
 {
     // Add the job seeker's education
-    y = addTen(y); 
+    y = addFive(y); 
     doc.setFontSize(16);
     doc.setFontStyle('bold');
     doc.text(10, y, 'Education');
@@ -178,7 +178,7 @@ if (Company_One != "")
 
     doc.setFontSize(12);
     doc.setFontStyle('bold');
-    y = addTen(y); 
+    y = addSeven(y); 
     doc.text(10, y, Company_One);
 
     if (Job_One_Ended != "" && Job_One_Started != "")
@@ -251,7 +251,7 @@ if (document.getElementById('Company2') !== null)
     {
         doc.setFontSize(12);
         doc.setFontStyle('bold');
-        y = addFive(y);
+        y = addTwo(y);
         doc.text(10, y, company);
     }
     if (document.getElementById('J2_Started') !== null &&
@@ -432,7 +432,7 @@ if (Project1 != "")
     //Projects
     doc.setFontSize(16);
     doc.setFontStyle('bold');
-    y = addSeven(y); 
+    y = addFive(y); 
     doc.text(10, y, 'Projects');
 
     doc.setFontSize(12);
@@ -514,7 +514,7 @@ if (document.getElementById('Project2') !== null)
     {
         doc.setFontSize(12);
         doc.setFontStyle('bold');
-        y = addSeven(y);
+        y = addFive(y);
         doc.text(10, y, newProj);
 
         if (document.getElementById('P2_Description1') !== null)
@@ -599,7 +599,7 @@ if (document.getElementById('Project3') !== null)
     {
         doc.setFontSize(12);
         doc.setFontStyle('bold');
-        y = addSeven(y);
+        y = addFive(y);
         doc.text(10, y, newProj);
 
         if (document.getElementById('P3_Description1') !== null)
@@ -856,5 +856,11 @@ function addDescr() {
   function addThirteen(y)
   {
       y = y + 13; 
+      return y; 
+  }
+
+  function addTwo(y)
+  {
+      y = y +2; 
       return y; 
   }
